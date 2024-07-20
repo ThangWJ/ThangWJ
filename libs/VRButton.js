@@ -1,3 +1,9 @@
+/**
+ * @author mrdoob / http://mrdoob.com
+ * @author Mugen87 / https://github.com/Mugen87
+ * @author NikLever / http://niklever.com
+ */
+
 class VRButton {
 
     constructor(renderer, options) {
@@ -98,10 +104,16 @@ class VRButton {
         //
 
         button.style.display = '';
-        button.style.right = '20px';
         button.style.width = '80px';
+        button.style.height = '40px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
+
+        // Center the button
+        button.style.position = 'fixed';
+        button.style.top = '50%';
+        button.style.left = '50%';
+        button.style.transform = 'translate(-50%, -50%)'; // Center the button
 
         button.onmouseenter = function () {
 
@@ -124,13 +136,6 @@ class VRButton {
         button.onclick = function () {
 
             if (currentSession === null) {
-
-                // WebXR's requestReferenceSpace only works if the corresponding feature
-                // was requested at session creation time. For simplicity, just ask for
-                // the interesting ones as optional features, but be aware that the
-                // requestReferenceSpace call will fail if it turns out to be unavailable.
-                // ('local' is always available for immersive sessions and doesn't need to
-                // be requested separately.)
 
                 navigator.xr.requestSession(self.sessionMode, self.sessionInit).then(onSessionStarted);
 
@@ -179,7 +184,7 @@ class VRButton {
         if (!ignorePadding) element.style.padding = '12px 6px';
         element.style.border = '1px solid #fff';
         element.style.borderRadius = '4px';
-        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
+        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change background color
         element.style.color = '#fff';
         element.style.font = `normal ${fontSize}px sans-serif`; // Corrected this line
         element.style.textAlign = 'center';
