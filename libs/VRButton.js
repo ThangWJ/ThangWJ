@@ -1,9 +1,3 @@
-/**
- * @author mrdoob / http://mrdoob.com
- * @author Mugen87 / https://github.com/Mugen87
- * @author NikLever / http://niklever.com
- */
-
 class VRButton {
 
     constructor(renderer, options) {
@@ -71,14 +65,14 @@ class VRButton {
         let currentSession = null;
         const self = this;
 
-        this.stylizeElement(button, true, 30, true);
+        this.stylizeElement(button, true, 45, true); // Increase fontSize to 45px
 
         function onSessionStarted(session) {
 
             session.addEventListener('end', onSessionEnded);
 
             self.renderer.xr.setSession(session);
-            self.stylizeElement(button, false, 12, true);
+            self.stylizeElement(button, false, 30, true); // Adjust fontSize for session state
 
             button.textContent = 'EXIT VR';
 
@@ -92,7 +86,7 @@ class VRButton {
 
             currentSession.removeEventListener('end', onSessionEnded);
 
-            self.stylizeElement(button, true, 12, true);
+            self.stylizeElement(button, true, 30, true); // Adjust fontSize for session state
             button.textContent = 'ENTER VR';
 
             currentSession = null;
@@ -104,20 +98,19 @@ class VRButton {
         //
 
         button.style.display = '';
-        button.style.width = '80px';
-        button.style.height = '40px';
+        button.style.width = '200px';
+        button.style.height = '100px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
-
-        // Center the button
-        button.style.position = 'fixed';
-        button.style.top = '50%';
+        button.style.position = 'absolute';
         button.style.left = '50%';
-        button.style.transform = 'translate(-50%, -50%)'; // Center the button
+        button.style.top = '50%';
+        button.style.transform = 'translate(-50%, -50%)';
 
         button.onmouseenter = function () {
 
-            button.style.fontSize = '12px';
+            button.style.fontSize = '45px'; // Increase fontSize on hover
+            button.style.transform = 'translate(-50%, -50%) scale(1.5)'; // Scale up button size
             button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
             button.style.opacity = '1.0';
             if (currentSession === null) button.style.color = 'red'; // Change text color to red for "ENTER VR"
@@ -126,7 +119,8 @@ class VRButton {
 
         button.onmouseleave = function () {
 
-            button.style.fontSize = '30px';
+            button.style.fontSize = '30px'; // Default fontSize
+            button.style.transform = 'translate(-50%, -50%)'; // Reset scale
             button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
             button.style.opacity = '0.5';
             button.style.color = ''; // Reset text color
@@ -177,16 +171,15 @@ class VRButton {
 
     }
 
-    stylizeElement(element, active = true, fontSize = 13, ignorePadding = false) {
+    stylizeElement(element, active = true, fontSize = 30, ignorePadding = false) {
 
         element.style.position = 'absolute';
-        element.style.bottom = '20px';
         if (!ignorePadding) element.style.padding = '12px 6px';
-        element.style.border = '1px solid #fff';
+        element.style.border = '1px solid #00f';
         element.style.borderRadius = '4px';
-        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change background color
-        element.style.color = '#fff';
-        element.style.font = `normal ${fontSize}px sans-serif`; // Corrected this line
+        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
+        element.style.color = '#f00';
+        element.style.font = `normal ${fontSize}px sans-serif`;
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
         element.style.outline = 'none';
