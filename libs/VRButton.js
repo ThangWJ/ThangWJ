@@ -1,9 +1,3 @@
-/**
- * @author mrdoob / http://mrdoob.com
- * @author Mugen87 / https://github.com/Mugen87
- * @author NikLever / http://niklever.com
- */
-
 class VRButton {
 
     constructor(renderer, options) {
@@ -71,14 +65,14 @@ class VRButton {
         let currentSession = null;
         const self = this;
 
-        this.stylizeElement(button, true, 30, true);
+        this.stylizeElement(button, true, 45, true); // Increase fontSize to 45px
 
         function onSessionStarted(session) {
 
             session.addEventListener('end', onSessionEnded);
 
             self.renderer.xr.setSession(session);
-            self.stylizeElement(button, false, 12, true);
+            self.stylizeElement(button, false, 30, true); // Adjust fontSize for session state
 
             button.textContent = 'EXIT VR';
 
@@ -92,7 +86,7 @@ class VRButton {
 
             currentSession.removeEventListener('end', onSessionEnded);
 
-            self.stylizeElement(button, true, 12, true);
+            self.stylizeElement(button, true, 30, true); // Adjust fontSize for session state
             button.textContent = 'ENTER VR';
 
             currentSession = null;
@@ -115,7 +109,8 @@ class VRButton {
 
         button.onmouseenter = function () {
 
-            button.style.fontSize = '12px';
+            button.style.fontSize = '45px'; // Increase fontSize on hover
+            button.style.transform = 'translate(-50%, -50%) scale(1.5)'; // Scale up button size
             button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
             button.style.opacity = '1.0';
             if (currentSession === null) button.style.color = 'red'; // Change text color to red for "ENTER VR"
@@ -124,7 +119,8 @@ class VRButton {
 
         button.onmouseleave = function () {
 
-            button.style.fontSize = '30px';
+            button.style.fontSize = '30px'; // Default fontSize
+            button.style.transform = 'translate(-50%, -50%)'; // Reset scale
             button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
             button.style.opacity = '0.5';
             button.style.color = ''; // Reset text color
@@ -134,13 +130,6 @@ class VRButton {
         button.onclick = function () {
 
             if (currentSession === null) {
-
-                // WebXR's requestReferenceSpace only works if the corresponding feature
-                // was requested at session creation time. For simplicity, just ask for
-                // the interesting ones as optional features, but be aware that the
-                // requestReferenceSpace call will fail if it turns out to be unavailable.
-                // ('local' is always available for immersive sessions and doesn't need to
-                // be requested separately.)
 
                 navigator.xr.requestSession(self.sessionMode, self.sessionInit).then(onSessionStarted);
 
@@ -182,7 +171,7 @@ class VRButton {
 
     }
 
-    stylizeElement(element, active = true, fontSize = 13, ignorePadding = false) {
+    stylizeElement(element, active = true, fontSize = 30, ignorePadding = false) {
 
         element.style.position = 'absolute';
         if (!ignorePadding) element.style.padding = '12px 6px';
