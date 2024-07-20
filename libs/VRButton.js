@@ -186,10 +186,10 @@ class VRButton {
         element.style.position = 'absolute';
         element.style.bottom = '20px';
         if (!ignorePadding) element.style.padding = '12px 6px';
-        element.style.border = '1px solid #fff';
+        element.style.border = '1px solid #00f';
         element.style.borderRadius = '4px';
         element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
-        element.style.color = '#fff';
+        element.style.color = '#f00';
         element.style.font = `normal ${fontSize}px sans-serif`;
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
