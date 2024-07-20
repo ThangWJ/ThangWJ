@@ -1,8 +1,3 @@
- * @author mrdoob / http://mrdoob.com
- * @author Mugen87 / https://github.com/Mugen87
- * @author NikLever / http://niklever.com
- */
-
 class VRButton {
 
     constructor(renderer, options) {
@@ -108,7 +103,6 @@ class VRButton {
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
 
-
         button.onmouseenter = function () {
 
             button.style.fontSize = '12px';
@@ -176,8 +170,6 @@ class VRButton {
         button.style.fontSize = '13px';
         button.textContent = 'VR NOT SUPPORTED';
 
-
-
     }
 
     stylizeElement(element, active = true, fontSize = 13, ignorePadding = false) {
@@ -189,15 +181,13 @@ class VRButton {
         element.style.borderRadius = '4px';
         element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
         element.style.color = '#fff';
-        element.style.font = normal ${ fontSize }px sans - serif;
+        element.style.font = `normal ${fontSize}px sans-serif`; // Corrected this line
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
         element.style.outline = 'none';
         element.style.zIndex = '999';
 
     }
-
-
 
 };
 
