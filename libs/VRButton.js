@@ -104,14 +104,11 @@ class VRButton {
         //
 
         button.style.display = '';
+        button.style.right = '20px';
         button.style.width = '80px';
-        button.style.height = '40px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
-        button.style.position = 'absolute';
-        button.style.left = '50%';
-        button.style.top = '50%';
-        button.style.transform = 'translate(-50%, -50%)';
+
 
         button.onmouseenter = function () {
 
@@ -180,23 +177,28 @@ class VRButton {
         button.style.fontSize = '13px';
         button.textContent = 'VR NOT SUPPORTED';
 
+
+
     }
 
     stylizeElement(element, active = true, fontSize = 13, ignorePadding = false) {
 
         element.style.position = 'absolute';
+        element.style.bottom = '20px';
         if (!ignorePadding) element.style.padding = '12px 6px';
         element.style.border = '1px solid #00f';
         element.style.borderRadius = '4px';
         element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
         element.style.color = '#f00';
-        element.style.font = `normal ${fontSize}px sans-serif`;
+        element.style.font = normal ${ fontSize }px sans - serif;
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
         element.style.outline = 'none';
         element.style.zIndex = '999';
 
     }
+
+
 
 };
 
