@@ -1,3 +1,4 @@
+/**
  * @author mrdoob / http://mrdoob.com
  * @author Mugen87 / https://github.com/Mugen87
  * @author NikLever / http://niklever.com
@@ -103,8 +104,8 @@ class VRButton {
         //
 
         button.style.display = '';
-        button.style.width = '200px';
-        button.style.height = '100px';
+        button.style.width = '80px';
+        button.style.height = '40px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
         button.style.position = 'absolute';
@@ -189,7 +190,7 @@ class VRButton {
         element.style.borderRadius = '4px';
         element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
         element.style.color = '#f00';
-        element.style.font = normal ${ fontSize }px sans - serif;
+        element.style.font = `normal ${fontSize}px sans-serif`;
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
         element.style.outline = 'none';
