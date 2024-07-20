@@ -1,3 +1,9 @@
+/**
+ * @author mrdoob / http://mrdoob.com
+ * @author Mugen87 / https://github.com/Mugen87
+ * @author NikLever / http://niklever.com
+ */
+
 class VRButton {
 
     constructor(renderer, options) {
@@ -109,6 +115,7 @@ class VRButton {
             button.style.fontSize = '12px';
             button.textContent = (currentSession === null) ? 'ENTER VR' : 'EXIT VR';
             button.style.opacity = '1.0';
+            if (currentSession === null) button.style.color = 'red'; // Change text color to red for "ENTER VR"
 
         };
 
@@ -117,6 +124,7 @@ class VRButton {
             button.style.fontSize = '30px';
             button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
             button.style.opacity = '0.5';
+            button.style.color = ''; // Reset text color
 
         };
 
@@ -180,8 +188,8 @@ class VRButton {
         if (!ignorePadding) element.style.padding = '12px 6px';
         element.style.border = '1px solid #fff';
         element.style.borderRadius = '4px';
-        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(180,20,20,1)';
-        element.style.color = '#0000FF'; // Changed text color to blue
+        element.style.background = (active) ? 'rgba(20,150,80,1)' : 'rgba(128,0,128,1)'; // Change loading background color to purple
+        element.style.color = '#fff';
         element.style.font = `normal ${fontSize}px sans-serif`;
         element.style.textAlign = 'center';
         element.style.opacity = '0.5';
@@ -189,6 +197,8 @@ class VRButton {
         element.style.zIndex = '999';
 
     }
+
+
 
 };
 
