@@ -104,8 +104,8 @@ class VRButton {
         //
 
         button.style.display = '';
-        button.style.width = '80px';
-        button.style.height = '40px';
+        button.style.width = '200px';
+        button.style.height = '100px';
         button.style.cursor = 'pointer';
         button.innerHTML = '<i class="fas fa-vr-cardboard"></i>';
         button.style.position = 'absolute';
